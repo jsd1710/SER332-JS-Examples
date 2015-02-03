@@ -100,8 +100,20 @@ function createSupport() {
 // Body of the bird - body and the connector of body and head
 function createBody() {
 	var sphereMaterial = new THREE.MeshLambertMaterial( { color: 0xA00000 } );
-	var cylinderMaterial = new THREE.MeshLambertMaterial( { color: 0x0000D0 } );
+	var cylinderMaterial = new THREE.MeshLambertMaterial({ color: 0x0000D0 });
 
+	var bodyCylinder = new THREE.Mesh(new THREE.CylinderGeometry(10, 10, 400, 10), cylinderMaterial);
+	bodyCylinder.position.x = 0;
+	bodyCylinder.position.y = 200 + 180;
+	bodyCylinder.position.z = 0;
+
+	var weightSphere = new THREE.Mesh(new THREE.SphereGeometry(40), sphereMaterial);
+	weightSphere.position.x = 0;
+	weightSphere.position.y = 180;
+	weightSphere.position.z = 0;
+
+	scene.add(bodyCylinder);
+	scene.add(weightSphere);
 }
 
 // Head of the bird - head + hat
@@ -109,6 +121,12 @@ function createHead() {
 	var sphereMaterial = new THREE.MeshLambertMaterial( { color: 0xA00000 } );
 	var cylinderMaterial = new THREE.MeshLambertMaterial( { color: 0x0000D0 } );
 
+	var headSphere = new THREE.Mesh(new THREE.SphereGeometry(40), sphereMaterial);
+	headSphere.position.x = 0;
+	headSphere.position.y = 400 + 180;
+	headSphere.position.z = 0;
+
+	scene.add(headSphere);
 }
 
 function createDrinkingBird() {
