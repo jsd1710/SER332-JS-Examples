@@ -1,3 +1,4 @@
+//DONE
 ////////////////////////////////////////////////////////////////////////////////
 // Fixing Incorrect JavaScript exercise
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,7 +18,7 @@ function drawGoldCube() {
 
 	var cube;
 	var cubeSizeLength = 100;
-	var goldColor = "#FFDF00";
+	var goldColor = 0xFFDF00;
 	var showFrame = true;
 	var wireMaterial = new THREE.MeshBasicMaterial( { color: goldColor, wireframe: showFrame } ) ;
 

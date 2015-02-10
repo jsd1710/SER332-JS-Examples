@@ -1,3 +1,4 @@
+//DONE
 ////////////////////////////////////////////////////////////////////////////////
 // Drinking Bird Model exercise                                               //
 // Your task is to complete the model for the drinking bird                   //
@@ -59,7 +60,8 @@ function createSupport() {
 	// base
 	var cube;
 	cube = new THREE.Mesh(
-		new THREE.CubeGeometry( 20+64+110, 4, 2*77 ), cubeMaterial );
+		new THREE.CubeGeometry(20 + 64 + 110, 4, 2 * 77), cubeMaterial);
+
 	cube.position.x = -45;	// (20+32) - half of width (20+64+110)/2
 	cube.position.y = 4/2;	// half of height
 	cube.position.z = 0;	// centered at origin
@@ -67,7 +69,8 @@ function createSupport() {
 
 	// left foot
 	cube = new THREE.Mesh(
-		new THREE.CubeGeometry( 20+64+110, 52, 6 ), cubeMaterial );
+		new THREE.CubeGeometry(20 + 64 + 110, 52, 6), cubeMaterial);
+
 	cube.position.x = -45;	// (20+32) - half of width (20+64+110)/2
 	cube.position.y = 52/2;	// half of height
 	cube.position.z = 77 + 6/2;	// offset 77 + half of depth 6/2
@@ -102,14 +105,14 @@ function createBody() {
 	var sphereMaterial = new THREE.MeshLambertMaterial( { color: 0xA00000 } );
 	var cylinderMaterial = new THREE.MeshLambertMaterial({ color: 0x0000D0 });
 
-	var bodyCylinder = new THREE.Mesh(new THREE.CylinderGeometry(10, 10, 400, 10), cylinderMaterial);
+	var bodyCylinder = new THREE.Mesh(new THREE.CylinderGeometry(12, 12, 390, 10), cylinderMaterial);
 	bodyCylinder.position.x = 0;
-	bodyCylinder.position.y = 200 + 180;
+	bodyCylinder.position.y = 160 + 390/2;
 	bodyCylinder.position.z = 0;
 
-	var weightSphere = new THREE.Mesh(new THREE.SphereGeometry(40), sphereMaterial);
+	var weightSphere = new THREE.Mesh(new THREE.SphereGeometry(116/2), sphereMaterial);
 	weightSphere.position.x = 0;
-	weightSphere.position.y = 180;
+	weightSphere.position.y = 160;
 	weightSphere.position.z = 0;
 
 	scene.add(bodyCylinder);
@@ -121,12 +124,66 @@ function createHead() {
 	var sphereMaterial = new THREE.MeshLambertMaterial( { color: 0xA00000 } );
 	var cylinderMaterial = new THREE.MeshLambertMaterial( { color: 0x0000D0 } );
 
-	var headSphere = new THREE.Mesh(new THREE.SphereGeometry(40), sphereMaterial);
+	var headSphere = new THREE.Mesh(new THREE.SphereGeometry(104/2), sphereMaterial);
 	headSphere.position.x = 0;
-	headSphere.position.y = 400 + 180;
+	headSphere.position.y = 160+390;
 	headSphere.position.z = 0;
 
+	var hatBaseCylinder = new THREE.Mesh(new THREE.CylinderGeometry(142/2, 142/2, 10, 10), cylinderMaterial);
+	hatBaseCylinder.position.x = 0;
+	hatBaseCylinder.position.y = 160+390+40;
+	hatBaseCylinder.position.z = 0;
+
+	var hatCylinder = new THREE.Mesh(new THREE.CylinderGeometry(80 / 2, 80 / 2, 70, 10), cylinderMaterial);
+	hatCylinder.position.x = 0;
+	hatCylinder.position.y = 160 + 390 + 40 + 10;
+	hatCylinder.position.z = 0;
+
 	scene.add(headSphere);
+	scene.add(hatBaseCylinder);
+	scene.add(hatCylinder);
+}
+
+function createSnowman()
+{
+    var sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xFFFFFF });
+    var cylinderMaterial = new THREE.MeshLambertMaterial({ color: 0x0000D0 });
+
+    for (var i = 3; i >= 1; i--)
+    {
+        var bodySphere = new THREE.Mesh(new THREE.SphereGeometry(50*i), sphereMaterial);
+        bodySphere.position.x = 300;
+        bodySphere.position.y = (3-i)*50/2 + (4-i)*100;
+        bodySphere.position.z = 0;
+
+        scene.add(bodySphere);
+    }
+
+    var hatBaseCylinder = new THREE.Mesh(new THREE.CylinderGeometry(142 / 2, 142 / 2, 10, 10), cylinderMaterial);
+    hatBaseCylinder.position.x = 300;
+    hatBaseCylinder.position.y = 375;
+    hatBaseCylinder.position.z = 0;
+
+    var hatCylinder = new THREE.Mesh(new THREE.CylinderGeometry(80 / 2, 80 / 2, 70, 10), cylinderMaterial);
+    hatCylinder.position.x = 300;
+    hatCylinder.position.y = 385;
+    hatCylinder.position.z = 0;
+
+    var eyeSphere = new THREE.Mesh(new THREE.SphereGeometry(10), sphereMaterial);
+    eyeSphere.position.x = 290;
+    eyeSphere.position.y = 360;
+    eyeSphere.position.z = 50;
+
+    var eye2Sphere = new THREE.Mesh(new THREE.SphereGeometry(10), sphereMaterial);
+    eye2Sphere.position.x = 310;
+    eye2Sphere.position.y = 360;
+    eye2Sphere.position.z = 50;
+
+    scene.add(eyeSphere);
+    scene.add(eye2Sphere);
+
+    scene.add(hatBaseCylinder);
+    scene.add(hatCylinder);
 }
 
 function createDrinkingBird() {
@@ -174,6 +231,7 @@ function fillScene() {
 		Coordinates.drawAllAxes({axisLength:300,axisRadius:2,axisTess:50});
 	}
 	createDrinkingBird();
+	createSnowman();
 }
 //
 function addToDOM() {

@@ -1,3 +1,4 @@
+//DONE
 ////////////////////////////////////////////////////////////////////////////////
 // Diffuse material exercise
 ////////////////////////////////////////////////////////////////////////////////
@@ -44,8 +45,10 @@ function init() {
 
 function createBall() {
 	// Do not change the color itself, change the material and use the ambient and diffuse components.
-	var material = new THREE.MeshBasicMaterial( { color: 0x80FC66, shading: THREE.FlatShading } );
-	var sphere = new THREE.Mesh( new THREE.SphereGeometry( 400, 64, 32 ), material );
+	var material = new THREE.MeshLambertMaterial( { color: 0x80FC66, shading: THREE.FlatShading } );
+    var newRed = material.color.r * 0.4
+	material.ambient.setRGB(newRed);
+	var sphere = new THREE.Mesh(new THREE.SphereGeometry(400, 64, 32), material);
 	return sphere;
 }
 
@@ -60,7 +63,7 @@ function fillScene() {
 	var ball = createBall();
 	scene.add( ball );
 
-	//Coordinates.drawGround({size:1000});
+	Coordinates.drawGround({size:1000});
 	//Coordinates.drawGrid({size:1000,scale:0.01});
 	//Coordinates.drawAllAxes({axisLength:500,axisRadius:1,axisTess:4});
 }

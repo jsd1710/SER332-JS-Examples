@@ -1,3 +1,4 @@
+//DONE
 ////////////////////////////////////////////////////////////////////////////////
 // Polygon Location Exercise
 // Your task is to write a function that will take 2 arguments:
@@ -24,7 +25,7 @@ function PolygonGeometry(sides, location) {
 		var y = Math.sin( angle );
 
 		// Save the vertex location
-		geo.vertices.push( new THREE.Vector3( x, y, 0.0 ) );
+		geo.vertices.push( new THREE.Vector3( x+location.x, y+location.y, 0.0 ) );
 	}
 
 	// generate faces

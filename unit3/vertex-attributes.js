@@ -1,3 +1,4 @@
+//DONE
 ////////////////////////////////////////////////////////////////////////////////
 /*global THREE, window, document, $*/
 var camera, scene, renderer;
@@ -17,19 +18,23 @@ function fillScene() {
 	var color2 = new THREE.Color(0x00FF00);
 	var color3 = new THREE.Color(0x0000FF);
     
+	geometry.vertices.push(new THREE.Vector3(0, 0, 0));
 	geometry.vertices.push(new THREE.Vector3(100, 0, 0));
-	geometry.vertices.push(new THREE.Vector3(0, 100, 0));
+	geometry.vertices.push(new THREE.Vector3(100, 0, 100));
 	geometry.vertices.push(new THREE.Vector3(0, 0, 100));
 
-	geometry.vertices.push(new THREE.Vector3(0, 100, 100));
-	geometry.vertices.push(new THREE.Vector3(100, 100, 0));
+	geometry.vertices.push(new THREE.Vector3(50, 50, 50));
 
-	geometry.faces.push(new THREE.Face3(0, 1, 2));
-	geometry.faces.push(new THREE.Face3(1, 2, 3));
+	geometry.faces.push(new THREE.Face3(0, 1, 4));
+	geometry.faces.push(new THREE.Face3(1, 2, 4));
 	geometry.faces.push(new THREE.Face3(2, 3, 4));
+	geometry.faces.push(new THREE.Face3(3, 0, 4));
+	geometry.faces.push(new THREE.Face4(0, 1, 2, 3));
 
 	geometry.faces[0].vertexColors = [color1, color2, color3];
-	geometry.faces[1].vertexColors = [color1, color2, color3];
+	geometry.faces[1].vertexColors = [color2, color1, color3];
+	geometry.faces[2].vertexColors = [color1, color2, color3];
+	geometry.faces[3].vertexColors = [color2, color1, color3];
 
 	mesh = new THREE.Mesh( geometry, material );
 
