@@ -1,3 +1,4 @@
+//DONE
 ////////////////////////////////////////////////////////////////////////////////
 // Scaling exercise: scale the sphere to make it look like a clock hand
 ////////////////////////////////////////////////////////////////////////////////
@@ -79,7 +80,9 @@ function fillScene() {
 	sphere.position.y = 18;	// move the hand above the other hand
 
 	// YOUR CODE HERE:
-
+	sphere.scale.x = 6/2;
+	sphere.scale.y = 4/10/2;
+	sphere.scale.z = 4/10/2;
 	scene.add( sphere );
 }
 

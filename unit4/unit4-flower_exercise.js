@@ -1,3 +1,4 @@
+//DONE
 ////////////////////////////////////////////////////////////////////////////////
 // Flower exercise: make a flower
 ////////////////////////////////////////////////////////////////////////////////
@@ -39,12 +40,21 @@ function fillScene() {
 	/////////
 	// YOUR CODE HERE
 	// add code here to make 24 petals, radiating around the sphere
-	// Just rotates and positions on the cylinder and petals are needed.
-	var cylinder = new THREE.Mesh( cylGeom, petalMaterial );
-	var petal = new THREE.Object3D();
-	petal.add( cylinder );
+    // Just rotates and positions on the cylinder and petals are needed.
 
-	flower.add( petal );
+	
+
+	for (var i = 0; i < 24; i++) {
+	    var petal = new THREE.Object3D();
+	    var cylinder = new THREE.Mesh(cylGeom, petalMaterial);
+	    petal.add(cylinder);
+	    petal.rotation.x = 90 * Math.PI / 180;
+	    petal.rotation.z = 360*(i / 24) * Math.PI / 180;
+	    
+	    petal.position.y = 200;
+	    
+	    flower.add(petal);
+	}
 
 	// Rest of the flower
 	var stamenMaterial = new THREE.MeshLambertMaterial( { color: 0x333310 } );
